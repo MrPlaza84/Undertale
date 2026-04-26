@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undertale</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'determinationmono';
+            src: url('determinationmonoweb-webfont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 50px;
+            font-family: 'determinationmono', 'Press Start 2P', monospace;
+            line-height: 1.6;
+            
+            /* CONFIGURACIÓN DEL FONDO ANIMADO */
+            background-image: url("Img/TOBYYY.webp");
+            background-repeat: repeat; /* Importante para que la imagen se duplique */
+            background-size: 100px; /* Ajusta el tamaño del patrón */
+            
+            /* Llamamos a la animación: nombre, duración, tipo de curva y bucle infinito */
+            animation: moverFondo 10s linear infinite;
+        }
+
+        /* DEFINICIÓN DEL MOVIMIENTO */
+        @keyframes moverFondo {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 500px 500px; /* Cambia estos números para variar la velocidad o dirección */
+            }
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ff0000;
+            text-shadow: 4px 4px #000000;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: #fff3ff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            border: 4px solid #ffffff;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.925); /* Más oscuro para que el texto se lea bien sobre el fondo móvil */
+            position: relative;
+            z-index: 1;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ffe600; 
+        }
+
+        img {
+
+            border: 5px solid #ffffff;
+            margin: 20px auto;
+            display: block;
+        }
+
+
+        .UNDERTALE img {
+            border: none;
+        }
+
+        .Tobias img {
+            border: none;
+            border-radius: 50%;
+            margin-right: 225px;
+            margin-top: -80px;
+            cursor: pointer;
+        }
+
+        /* ESTILOS DEL MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: rgba(0, 0, 0, 0.925);
+            margin: 5% auto;
+            padding: 30px;
+            border: 4px solid #ffffff;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .close-btn {
+            color: #ffffff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            margin: -10px 0 0 0;
+        }
+
+        .close-btn:hover {
+            color: #ff0000;
+        }
+
+        .modal h3 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .modal-links {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .modal-links li {
+            margin: 15px 0;
+        }
+
+        .modal-links a {
+            color: #ffe600;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .modal-links a:hover {
+            color: #ff0000;
+            text-decoration: underline;
+        }
+
+        .X {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        .X img {
+            border: none;
+            width: 40px;
+            height: 40px;
+            margin-right: 310px;
+            margin-top: -50px;
+        }
+
+        .Bluesky{
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        .BlueSky img {
+            border: none;
+            width: 30px;
+            height: 30px;
+            margin-right: 315px;
+            margin-top: -45px;
+        }
+
+        .Youtube{
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        .Youtube img {
+            border: none;
+            margin-right: 310px;
+            margin-top: -45px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+    <a href="https://undertale.com/" title="Ir a undertale ">    
+        <div class="UNDERTALE">
+        <img src="https://undertale.com/assets/images/logo.png">
+          </div>
+    </a>    
+        <h2>Por Toby Fox</h2>
+        <div class="Tobias">
+        <img id="tobyImg" src="Img/TOBYYY.webp" width="50" alt="Toby Fox">
+        </div>
+    </div>
+
+    <!-- MODAL DE TOBY FOX -->
+    <div id="tobyModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="cerrarModal()">&times;</button>
+            <h3>Toby Fox</h3>
+            <ul class="modal-links">
+            <li><a href="https://bsky.app/profile/tobyfox.undertale.com" target="_blank">BlueSky</a></li>
+            <div class="BlueSky"> 
+                <img src="Img/Bluesky_Logo.png" width="50" alt="BlueSky">
+              </div>
+            <li><a href="https://twitter.com/tobyfox" target="_blank">Twitter</a></li>
+            <div class="X"> 
+                <img src="Img/X.avif" width="50" alt="X">
+              </div>
+            <li><a href="https://www.youtube.com/@toby-fox-music" target="_blank">YouTube</a></li>
+            <div class="Youtube"> 
+            <img src="Img/Youtube_logo.png" width="40" alt="BlueSky">
+              </div>
+        
+        </ul>
+        </div>
+    </div>
+    
+    <div class="container">    
+        <h3>Biografía</h3>
+        
+        <ul>
+            <li>Undertale es un juego indie de rol (RPG), desarrollado por Toby Fox, que trata de un mundo donde tus decisiones importan. Toby Fox hizo este juego como práctica para crear un juego que soñaba con crear: Deltarune</li>
+        </ul>
+        <img src="Img/Undertale.webp" width="600" alt="rwegfregre">
+    </div>
+
+    <div class="container">
+        <h3>Sinopsis</h3>
+
+        <ul>
+            <li>la historia sigue a un niño humano que cae accidentalmente en una montaña que lo lleva al subsuelo, una region aislada bajo tierra donde los monstruos fueron desterrados tras una guerra antigua contra los humanos. para regresar a la superficie, el protagonista debe atravesar la barrera magica que mantiene a los monstruos prisioneros,lo que obliga a cruzar todo el reino.</li>
+        </ul>
+        <img src="Img/Kid.webp" width="700" alt="ferfgerg">
+    </div>
+
+    <div class="container">
+        <ul>
+
+            <h3>historia</h3>
+
+        </ul>
+
+        <h3>El Prólogo: La Guerra de las Dos Razas</h3>
+
+        <ul>
+
+        <img src="Img/Once_Upon_a_Time.webp" width="600" alt="Érase una vez">
+        
+        </ul>
+
+        <ul>
+
+    <li>Hace mucho tiempo, la Tierra estaba gobernada por dos razas: Humanos y Monstruos. Un día, estalló una guerra entre ambos. Tras una larga batalla, los humanos salieron victoriosos y, mediante un hechizo mágico, sellaron a los monstruos en el Subsuelo bajo el Monte Ebott.</li>
+
+
+
+<ul>
+
+<img src="Img/HumansAndMonstersWar.webp" width="600" alt="lol">
+
+</ul>
+
+        <ul>
+            <li>El sello solo puede romperse con el poder de siete almas humanas. Hasta el inicio del juego, el Rey de los monstruos, Asgore Dreemurr, ya ha logrado recolectar seis.</li>
+        </ul>
+
+        <ul>
+
+         <img src="Img/Monsters.jpg" width="600" alt="El destierro de los monstruos">   
+
+        </ul>
+
+    </div>
+</body>
+</html>
+
+<script>
+    // Obtener el modal
+    const modal = document.getElementById('tobyModal');
+    const tobyImg = document.getElementById('tobyImg');
+
+    // Abrir modal al hacer clic en la imagen
+    tobyImg.onclick = function() {
+        modal.style.display = 'block';
+    }
+
+    // Cerrar modal
+    function cerrarModal() {
+        modal.style.display = 'none';
+    }
+
+    // Cerrar modal al hacer clic fuera del contenido
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
