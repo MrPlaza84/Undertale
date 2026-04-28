@@ -23,22 +23,19 @@
             font-family: 'determinationmono', 'Press Start 2P', monospace;
             line-height: 1.6;
             
-            /* CONFIGURACIÓN DEL FONDO ANIMADO */
             background-image: url("Img/TOBYYY.webp");
-            background-repeat: repeat; /* Importante para que la imagen se duplique */
-            background-size: 100px; /* Ajusta el tamaño del patrón */
+            background-repeat: repeat;
+            background-size: 100px;
             
-            /* Llamamos a la animación: nombre, duración, tipo de curva y bucle infinito */
             animation: moverFondo 10s linear infinite;
         }
 
-        /* DEFINICIÓN DEL MOVIMIENTO */
         @keyframes moverFondo {
             from {
                 background-position: 0 0;
             }
             to {
-                background-position: 500px 500px; /* Cambia estos números para variar la velocidad o dirección */
+                background-position: 500px 500px; 
             }
         }
 
@@ -320,10 +317,208 @@
             }
         }
 
+ .spamton {
+    position: relative;
+    /* Eliminamos top y right para que no flote sobre lo demás */
+    margin-top: -40px;   /* Usamos margin en lugar de top para que empuje el contenido */
+    margin-left: 1550px;  /* Usamos margin en lugar de right para dar espacio desde la izquierda */
+    text-align: center;
+    color: yellow;
+    display: block;     /* Asegura que sea un bloque sólido */
+    width: fit-content; /* Para que solo ocupe el espacio de su contenido */
+    padding: 10px;
+    border: 2px solid #ffffff;
+    background-color: #000000;
+}
+
+.spamton img {
+    position: relative;
+    width: 70px;
+    height: auto;
+    border: none;
+    display: block;
+    margin-top: -10px;   /* Espacio entre el texto y la imagen de Spamton */
+        }
+
+    .spamton {
+        cursor: pointer;
+    }
+
+    .spamton-modal {
+        display: none;
+        position: fixed;
+        z-index: 1100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+    }
+
+    .spamton-modal-content {
+        background-color: rgba(0, 0, 0, 0.95);
+        margin: 5% auto;
+        padding: 25px;
+        border: 3px solid #ffe600;
+        width: 90%;
+        max-width: 700px;
+        max-height: 85vh;
+        overflow-y: auto;
+        position: relative;
+        text-align: center;
+    }
+
+    .spamton-modal-content h3 {
+        margin-top: 0;
+        color: #ffe600;
+    }
+
+    .spamton-modal-content p {
+        color: #ffffff;
+        line-height: 1.5;
+        margin: 18px 0;
+    }
+
+    .spamton-modal-content button {
+        background-color: #ff0000;
+        color: #ffffff;
+        border: none;
+        padding: 12px 20px;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 14px;
+    }
+
+    .spamton-modal-content button:hover {
+        background-color: #ffe600;
+        color: #000000;
+    }
+
+    .spamton-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin: 20px 0;
+        text-align: left;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        color: #ffe600;
+        font-size: 12px;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        background-color: #1a1a1a;
+        color: #ffffff;
+        border: 2px solid #ffe600;
+        padding: 8px;
+        font-family: inherit;
+        font-size: 12px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #ff0000;
+        box-shadow: 0 0 5px #ff0000;
+    }
+
+    .form-full-width {
+        grid-column: 1 / -1;
+    }
+
+    .spamton-modal-content .form-buttons {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .spamton-modal-content .form-buttons button {
+        flex: 1;
+        padding: 10px;
+        cursor: pointer;
+    }
+
     </style>
+
+
 </head>
 <body>
 
+    <div class="spamton" id="spamtonTrigger">
+    <p>[TOCAME] PARA R3ALIZAR [FORMULARIO]</p>    
+    <img src="Img/spamton.png" width="200" alt="Spamton">
+    </div>
+
+    <div id="spamtonModal" class="spamton-modal">
+        <div class="spamton-modal-content">
+            <button class="close-btn" onclick="cerrarSpamtonModal()">&times;</button>
+            <h3>Ingreso de Datos</h3>
+            <form id="spamtonForm">
+                <div class="spamton-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre...">
+                    </div>
+                    <div class="form-group">
+                    <label for="contraseña">Contraseña</label>
+                    <input type="password" id="contraseña" name="contraseña" placeholder="Ingresa contraseña">
+                    </div>
+
+                    <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                    <label for="numero">Número</label>
+                    <input type="number" id="numero" name="numero" placeholder="0">
+                    </div>
+
+                    <div class="form-group">
+                    <label for="seleccion-unica">Comida Favorita</label>
+                    <select id="seleccion-unica" name="seleccion-unica">
+                    <option value="">-- Selecciona tu comida --</option>
+                    <option value="opcion1">Pastel de Caramelo</option>
+                    <option value="opcion2">Manzana</option>
+                    <option value="opcion3">Dolor</option>
+                    <option value="opcion4">otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="calendario">Fecha de nacimiento</label>
+                        <input type="date" id="calendario" name="calendario">
+                    </div>
+
+                    <div class="form-group form-full-width">
+                        <label for="seleccion-multiple">¿Cual personaje es tu favorito?</label>
+                        <select id="seleccion-multiple" name="seleccion-multiple" multiple>
+                            <option value="opcion1">Spamton G. Spamton</option>
+                            <option value="opcion2">Flowey</option>
+                            <option value="opcion3">Sans Undertale</option>
+                            <option value="opcion4">Kris Dreemurr</option>
+                        </select>
+                        
+                </div>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" style="background-color: #00ff00;">Enviar</button>
+                    <button type="reset" style="background-color: #ff0000;">Limpiar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
     <div class="container">
     <a href="https://undertale.com/" title="Ir a undertale ">    
         <div class="UNDERTALE">
@@ -415,28 +610,51 @@
         </ul>
 
     </div>
-</body>
-</html>
 
-<script>
-    // Obtener el modal
+    <script>
+    // Obtener el modal de Toby Fox
     const modal = document.getElementById('tobyModal');
     const tobyImg = document.getElementById('tobyImg');
 
-    // Abrir modal al hacer clic en la imagen
+    // Obtener el modal de Spamton
+    const spamtonModal = document.getElementById('spamtonModal');
+    const spamtonTrigger = document.getElementById('spamtonTrigger');
+
+    // Abrir modal al hacer clic en la imagen de Toby
     tobyImg.onclick = function() {
         modal.style.display = 'block';
     }
 
-    // Cerrar modal
+    // Abrir modal de Spamton al hacer clic en el bloque
+    spamtonTrigger.onclick = function() {
+        spamtonModal.style.display = 'block';
+    }
+
     function cerrarModal() {
         modal.style.display = 'none';
     }
+
+    function cerrarSpamtonModal() {
+        spamtonModal.style.display = 'none';
+    }
+
+    // Manejar envío del formulario de Spamton
+    document.getElementById('spamtonForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('¡Formulario enviado! Los datos han sido registrados.');
+        this.reset();
+        cerrarSpamtonModal();
+    });
 
     // Cerrar modal al hacer clic fuera del contenido
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = 'none';
         }
+        if (event.target == spamtonModal) {
+            spamtonModal.style.display = 'none';
+        }
     }
-</script>
+    </script>
+</body>
+</html>
