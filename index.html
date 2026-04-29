@@ -273,6 +273,16 @@
             .modal-links a {
                 font-size: 14px;
             }
+
+            .spamton {
+                width: clamp(130px, 24vw, 180px);
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .spamton p {
+                font-size: 11px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -315,34 +325,65 @@
             .modal-links a {
                 font-size: 12px;
             }
+
+            .spamton {
+                display: none;
+            }
+
+            .spamton-mobile-trigger {
+                display: block;
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                width: clamp(120px, 30vw, 160px);
+                padding: 8px;
+                border: 2px solid #ffffff;
+                background-color: #000000;
+                color: #ffff00;
+                font-family: inherit;
+                font-size: 12px;
+                cursor: pointer;
+                z-index: 999;
+                box-sizing: border-box;
+            }
+
+            .spamton p {
+                font-size: 11px;
+            }
         }
 
- .spamton {
-    position: relative;
-    /* Eliminamos top y right para que no flote sobre lo demás */
-    margin-top: -10px;   /* Usamos margin en lugar de top para que empuje el contenido */
-    margin-left: 1550px;  /* Usamos margin en lugar de right para dar espacio desde la izquierda */
+.spamton {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
     text-align: center;
     color: yellow;
-    display: block;     /* Asegura que sea un bloque sólido */
-    width: fit-content; /* Para que solo ocupe el espacio de su contenido */
-    padding: 10px;
+    display: inline-block;
+    width: clamp(140px, 18vw, 180px);
+    padding: 8px;
     border: 2px solid #ffffff;
     background-color: #000000;
+    z-index: 999;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.spamton p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.3;
 }
 
 .spamton img {
-    position: relative;
-    width: 70px;
-    height: auto;
-    border: none;
+    width: 100%;
     display: block;
-    margin-top: -10px;   /* Espacio entre el texto y la imagen de Spamton */
-        }
+    margin: 10px auto 0;
+    border: none;
+}
 
-    .spamton {
-        cursor: pointer;
-    }
+.spamton-mobile-trigger {
+    display: none;
+}
 
     .spamton-modal {
         display: none;
@@ -455,6 +496,8 @@
 
 </head>
 <body>
+
+    <button id="spamtonMobileTrigger" class="spamton-mobile-trigger" type="button">TOCA AQUÍ</button>
 
     <div class="spamton" id="spamtonTrigger">
     <p>[TOCAME] PARA R3ALIZAR [FORMULARIO]</p>    
@@ -620,6 +663,7 @@
     // Obtener el modal de Spamton
     const spamtonModal = document.getElementById('spamtonModal');
     const spamtonTrigger = document.getElementById('spamtonTrigger');
+    const spamtonMobileTrigger = document.getElementById('spamtonMobileTrigger');
 
     // Abrir modal al hacer clic en la imagen de Toby
     tobyImg.onclick = function() {
@@ -629,6 +673,13 @@
     // Abrir modal de Spamton al hacer clic en el bloque
     spamtonTrigger.onclick = function() {
         spamtonModal.style.display = 'block';
+    }
+
+    // Abrir modal de Spamton desde el botón móvil
+    if (spamtonMobileTrigger) {
+        spamtonMobileTrigger.onclick = function() {
+            spamtonModal.style.display = 'block';
+        }
     }
 
     function cerrarModal() {
